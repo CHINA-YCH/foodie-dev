@@ -3,6 +3,7 @@ package com.imooc.service;
 import com.imooc.pojo.Stu;
 import com.imooc.pojo.Users;
 import com.imooc.pojo.bo.UserBO;
+import org.springframework.stereotype.Service;
 
 /**
  * @author :Administrator
@@ -10,6 +11,7 @@ import com.imooc.pojo.bo.UserBO;
  * @date :2023-06-11 17:27:07
  * @describe :interface
  */
+@Service
 public interface UserService {
 
     /**

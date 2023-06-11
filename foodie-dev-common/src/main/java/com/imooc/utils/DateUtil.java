@@ -29,7 +29,7 @@ public class DateUtil {
     /**
      * 则个
      */
-    private static boolean LENIENT_DATE = false;
+    private static final boolean LENIENT_DATE = false;
 
 
     private static Random random = new Random();
@@ -45,9 +45,7 @@ public class DateUtil {
     }
 
     protected static final float normalizedJulian(float JD) {
-
         float f = Math.round(JD + 0.5f) - 0.5f;
-
         return f;
     }
 
@@ -121,8 +119,8 @@ public class DateUtil {
      * the second date is after the first, and negative values indicate, well,
      * the opposite.
      *
-     * @param early
-     * @param late
+     * @param early -
+     * @param late  -
      * @return the days between two dates.
      */
     public static final int daysBetween(Calendar early, Calendar late) {
@@ -160,7 +158,7 @@ public class DateUtil {
      * <a href="http://quasar.as.utexas.edu/BillInfo/JulianDatesG.html">Julian Day Calculations
      * (Gregorian Calendar)</a>, provided by Bill Jeffrys.
      *
-     * @param date
+     * @param date -
      * @return the julian day number
      */
     public static final float toJulian(Date date) {
@@ -172,12 +170,12 @@ public class DateUtil {
     }
 
     /**
-     * @param isoString
-     * @param fmt
+     * @param isoString -
+     * @param fmt       -
      * @param field     Calendar.YEAR/Calendar.MONTH/Calendar.DATE
-     * @param amount
+     * @param amount    -
      * @return
-     * @throws ParseException
+     * @throws ParseException -
      */
     public static final String dateIncrease(String isoString, String fmt,
                                             int field, int amount) {
@@ -199,10 +197,10 @@ public class DateUtil {
      * Time Field Rolling function.
      * Rolls (up/down) a single unit of time on the given time field.
      *
-     * @param isoString
+     * @param isoString -
      * @param field     the time field.
      * @param up        Indicates if rolling up or rolling down the field value.
-     * @param expanded  use formating char's
+     *                  //     * @param expanded  use formating char's
      * @throws ParseException if an unknown field value is given.
      */
     public static final String roll(String isoString, String fmt, int field, boolean up) throws ParseException {
@@ -218,7 +216,7 @@ public class DateUtil {
      * Time Field Rolling function.
      * Rolls (up/down) a single unit of time on the given time field.
      *
-     * @param isoString
+     * @param isoString -
      * @param field     the time field.
      * @param up        Indicates if rolling up or rolling down the field value.
      * @throws ParseException if an unknown field value is given.
@@ -232,10 +230,10 @@ public class DateUtil {
     /**
      * java.util.Date
      *
-     * @param dateText
-     * @param format
-     * @param lenient
-     * @return
+     * @param dateText -
+     * @param format   -
+     * @param lenient  -
+     * @return -
      */
     public static Date stringToDate(String dateText, String format,
                                     boolean lenient) {
@@ -275,10 +273,11 @@ public class DateUtil {
 
     /**
      * java.util.Date
+     * <p>
+     * //     * @param dateText
      *
-     * @param dateText
-     * @param format
-     * @return
+     * @param format -
+     * @return -
      */
     public static Date stringToDate(String dateString, String format) {
 
@@ -295,9 +294,9 @@ public class DateUtil {
     }
 
     /**
-     * @param pattern
-     * @param date
-     * @return
+     * @param pattern -
+     * @param date    -
+     * @return -
      */
     public static String dateToString(Date date, String pattern) {
 
@@ -321,15 +320,15 @@ public class DateUtil {
     /**
      * yyyy-MM-dd
      *
-     * @param date
-     * @return
+     * @param date -
+     * @return -
      */
     public static String dateToString(Date date) {
         return dateToString(date, ISO_EXPANDED_DATE_FORMAT);
     }
 
     /**
-     * @return
+     * @return -
      */
     public static Date getCurrentDateTime() {
         Calendar calNow = Calendar.getInstance();
@@ -339,8 +338,8 @@ public class DateUtil {
     }
 
     /**
-     * @param pattern
-     * @return
+     * @param pattern -
+     * @return -
      */
     public static String getCurrentDateString(String pattern) {
         return dateToString(getCurrentDateTime(), pattern);
@@ -349,7 +348,7 @@ public class DateUtil {
     /**
      * yyyy-MM-dd
      *
-     * @return
+     * @return -
      */
     public static String getCurrentDateString() {
         return dateToString(getCurrentDateTime(), ISO_EXPANDED_DATE_FORMAT);
@@ -358,8 +357,9 @@ public class DateUtil {
     /**
      * 返回固定格式的当前时间
      * yyyy-MM-dd hh:mm:ss
+     * <p>
+     * //     * @param date
      *
-     * @param date
      * @return
      */
     public static String dateToStringWithTime() {
@@ -371,8 +371,8 @@ public class DateUtil {
     /**
      * yyyy-MM-dd hh:mm:ss
      *
-     * @param date
-     * @return
+     * @param date -
+     * @return -
      */
     public static String dateToStringWithTime(Date date) {
 
@@ -380,8 +380,8 @@ public class DateUtil {
     }
 
     /**
-     * @param date
-     * @param days
+     * @param date -
+     * @param days -
      * @return java.util.Date
      */
     public static Date dateIncreaseByDay(Date date, int days) {
@@ -395,8 +395,8 @@ public class DateUtil {
     }
 
     /**
-     * @param date
-     * @param days
+     * @param date -
+     *             //     * @param days
      * @return java.util.Date
      */
     public static Date dateIncreaseByMonth(Date date, int mnt) {
@@ -410,8 +410,8 @@ public class DateUtil {
     }
 
     /**
-     * @param date
-     * @param mnt
+     * @param date -
+     * @param mnt  -
      * @return java.util.Date
      */
     public static Date dateIncreaseByYear(Date date, int mnt) {
@@ -426,7 +426,7 @@ public class DateUtil {
 
     /**
      * @param date yyyy-MM-dd
-     * @param days
+     * @param days -
      * @return yyyy-MM-dd
      */
     public static String dateIncreaseByDay(String date, int days) {
@@ -434,19 +434,19 @@ public class DateUtil {
     }
 
     /**
-     * @param date
-     * @param fmt
-     * @param days
-     * @return
+     * @param date -
+     * @param fmt  -
+     * @param days -
+     * @return -
      */
     public static String dateIncreaseByDay(String date, String fmt, int days) {
         return dateIncrease(date, fmt, Calendar.DATE, days);
     }
 
     /**
-     * @param src
-     * @param srcfmt
-     * @param desfmt
+     * @param src    -
+     * @param srcfmt -
+     * @param desfmt -
      * @return
      */
     public static String stringToString(String src, String srcfmt,

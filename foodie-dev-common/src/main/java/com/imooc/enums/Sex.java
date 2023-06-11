@@ -13,6 +13,9 @@ import lombok.Getter;
 @Getter
 
 public enum Sex {
+    /**
+     * woman
+     */
     woman(0, "女"),
     man(1, "男"),
     secret(2, "保密");

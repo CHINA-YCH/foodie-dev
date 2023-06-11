@@ -1,14 +1,12 @@
 package com.imooc.controller;
 
 import com.imooc.pojo.bo.UserBO;
-import com.imooc.service.StuService;
 import com.imooc.service.UserService;
 import com.imooc.utils.IMOOCJSONResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 /**
