@@ -2,6 +2,9 @@ package com.imooc.pojo;
 
 import javax.persistence.*;
 
+/**
+ * @author Administrator
+ */
 public class Stu {
     @Id
     private Integer id;
