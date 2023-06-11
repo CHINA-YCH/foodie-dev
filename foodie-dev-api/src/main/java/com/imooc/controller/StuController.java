@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * @author :Administrator
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date :2023-06-11 14:14:38
  * @describe :class
  */
+@ApiIgnore
 @RestController
 public class StuController {
 

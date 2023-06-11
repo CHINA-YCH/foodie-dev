@@ -11,6 +11,7 @@ import lombok.Getter;
  */
 @AllArgsConstructor
 @Getter
+
 public enum Sex {
     woman(0, "女"),
     man(1, "男"),
