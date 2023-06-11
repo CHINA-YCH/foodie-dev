@@ -1,6 +1,8 @@
 package com.imooc.service;
 
 import com.imooc.pojo.Stu;
+import com.imooc.pojo.Users;
+import com.imooc.pojo.bo.UserBO;
 
 /**
  * @author :Administrator
@@ -17,4 +19,13 @@ public interface UserService {
      * @return -
      */
     public boolean queryUsernameIsExist(String username);
+
+
+    /**
+     * 创建用户
+     *
+     * @param userBO 前端传过来的参数
+     * @return -
+     */
+    public Users createUser(UserBO userBO);
 }
