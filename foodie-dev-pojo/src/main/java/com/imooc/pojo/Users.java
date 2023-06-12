@@ -1,8 +1,18 @@
 package com.imooc.pojo;
 
+import lombok.*;
+
 import java.util.Date;
 import javax.persistence.*;
 
+/**
+ * @author Administrator
+ */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class Users {
     /**
      * 主键id 用户id
