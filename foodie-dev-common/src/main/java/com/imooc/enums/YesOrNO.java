@@ -5,19 +5,19 @@ import lombok.Getter;
 
 /**
  * @author :Administrator
- * @path :Sex
- * @date :2023-06-11 22:03:53
- * @describe :enum
+ * @path :YesOrNO
+ * @date :2023-06-25 20:25:02
+ * @describe :enum 是否 枚举
  */
 @AllArgsConstructor
 @Getter
-public enum Sex {
+public enum YesOrNO {
+
     /**
      * woman
      */
-    woman(0, "女"),
-    man(1, "男"),
-    secret(2, "保密");
+    NO(0, "否"),
+    YES(1, "是");
     public final Integer type;
     public final String value;
 
