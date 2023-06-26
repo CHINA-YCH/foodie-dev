@@ -9,11 +9,30 @@ import com.imooc.pojo.Stu;
  * @describe :interface
  */
 public interface StuService {
-    public Stu getStuInfo(int id);
+    /**
+     * -
+     *
+     * @param id -
+     * @return -
+     */
+    Stu getStuInfo(int id);
 
-    public void saveStu();
+    /**
+     * -
+     */
+    void saveStu();
 
-    public void updateStu(int id);
+    /**
+     * -
+     *
+     * @param id -
+     */
+    void updateStu(int id);
 
-    public void deleteStu(int id);
+    /**
+     * -
+     *
+     * @param id -
+     */
+    void deleteStu(int id);
 }

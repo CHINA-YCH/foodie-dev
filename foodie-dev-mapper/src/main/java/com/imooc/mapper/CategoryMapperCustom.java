@@ -22,7 +22,7 @@ public interface CategoryMapperCustom {
      * @param rootCatId -
      * @return -
      */
-    public List<CategoryVO> getSubCatList(Integer rootCatId);
+    List<CategoryVO> getSubCatList(Integer rootCatId);
 
 
     /**
@@ -31,6 +31,6 @@ public interface CategoryMapperCustom {
      * @param map -
      * @return -
      */
-    public List<NewItemsVO> getSixNewItemsLazy(@Param("paramsMap") Map<String, Object> map);
+    List<NewItemsVO> getSixNewItemsLazy(@Param("paramsMap") Map<String, Object> map);
 
 }

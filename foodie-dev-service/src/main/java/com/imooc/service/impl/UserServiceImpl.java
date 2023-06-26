@@ -1,12 +1,9 @@
 package com.imooc.service.impl;
 
 import com.imooc.enums.Sex;
-import com.imooc.mapper.StuMapper;
 import com.imooc.mapper.UsersMapper;
-import com.imooc.pojo.Stu;
 import com.imooc.pojo.Users;
 import com.imooc.pojo.bo.UserBO;
-import com.imooc.service.StuService;
 import com.imooc.service.UserService;
 import com.imooc.utils.DateUtil;
 import com.imooc.utils.MD5Utils;
@@ -37,19 +34,18 @@ public class UserServiceImpl implements UserService {
 
     public static final String USER_FACE = "\"C:\\Users\\Administrator\\Desktop\\desk\\wallhaven-9d8x9d.png\"";
 
-    @Transactional(propagation = Propagation.SUPPORTS)
+    @Transactional(propagation = Propagation.SUPPORTS, rollbackFor = RuntimeException.class)
     @Override
     public boolean queryUsernameIsExist(String username) {
         Example userExample = new Example(Users.class);
         Example.Criteria userCriteria = userExample.createCriteria();
-
         userCriteria.andEqualTo("username", username);
         Users result = userMapper.selectOneByExample(userExample);
 
-        return result == null ? false : true;
+        return result != null;
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
     @Override
     public Users createUser(UserBO userBO) {
 
@@ -78,16 +74,13 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    @Transactional(propagation = Propagation.SUPPORTS)
+    @Transactional(propagation = Propagation.SUPPORTS, rollbackFor = RuntimeException.class)
     @Override
     public Users queryUserForLogin(String username, String password) {
         Example example = new Example(Users.class);
         Example.Criteria criteria = example.createCriteria();
         criteria.andEqualTo("username", username);
         criteria.andEqualTo("password", password);
-
-        Users result = userMapper.selectOneByExample(example);
-
-        return result;
+        return userMapper.selectOneByExample(example);
     }
 }

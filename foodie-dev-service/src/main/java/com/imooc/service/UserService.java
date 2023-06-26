@@ -1,9 +1,7 @@
 package com.imooc.service;
 
-import com.imooc.pojo.Stu;
 import com.imooc.pojo.Users;
 import com.imooc.pojo.bo.UserBO;
-import org.springframework.stereotype.Service;
 
 /**
  * @author :Administrator
@@ -11,7 +9,7 @@ import org.springframework.stereotype.Service;
  * @date :2023-06-11 17:27:07
  * @describe :interface
  */
-@Service
+
 public interface UserService {
 
     /**
@@ -20,7 +18,7 @@ public interface UserService {
      * @param username -
      * @return -
      */
-    public boolean queryUsernameIsExist(String username);
+    boolean queryUsernameIsExist(String username);
 
 
     /**
@@ -29,13 +27,14 @@ public interface UserService {
      * @param userBO 前端传过来的参数
      * @return -
      */
-    public Users createUser(UserBO userBO);
+    Users createUser(UserBO userBO);
 
     /**
      * 检索用户名和密码是否匹配，用于等率
+     *
      * @param username -
      * @param password -
      * @return -
      */
-    public Users queryUserForLogin(String username, String password);
+    Users queryUserForLogin(String username, String password);
 }

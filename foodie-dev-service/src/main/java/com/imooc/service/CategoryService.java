@@ -19,7 +19,7 @@ public interface CategoryService {
      *
      * @return -
      */
-    public List<Category> queryAllRootLevelCat();
+    List<Category> queryAllRootLevelCat();
 
     /**
      * 根据一级分类ID 查询子分类
@@ -27,7 +27,7 @@ public interface CategoryService {
      * @param rootCatId -
      * @return -
      */
-    public List<CategoryVO> getSubCatList(Integer rootCatId);
+    List<CategoryVO> getSubCatList(Integer rootCatId);
 
 
     /**
@@ -36,5 +36,5 @@ public interface CategoryService {
      * @param rootCatId -
      * @return -
      */
-    public List<NewItemsVO> getSixNewItemsLazy(Integer rootCatId);
+    List<NewItemsVO> getSixNewItemsLazy(Integer rootCatId);
 }
