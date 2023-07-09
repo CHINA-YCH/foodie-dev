@@ -79,11 +79,37 @@ public class ItemsController extends BaseController {
         }
 
         if (pageSize == null) {
-            pageSize = COMMENT_PAGE_SIZE;
+            pageSize = PAGE_SIZE;
         }
 
         PagedGridResult item = itemService.queryPageComments(itemId, level, page, pageSize);
         // 3 请求成功，用户名没要 重复
         return IMOOCJSONResult.ok(item);
     }
+
+    @ApiOperation(value = "搜索商品列表", notes = "搜索商品列表.", httpMethod = "GET")
+    @GetMapping(value = "/search")
+    public IMOOCJSONResult search(
+            @ApiParam(name = "keywords", value = "关键字", required = true) @RequestParam String keywords,
+            @ApiParam(name = "sort", value = "排序") @RequestParam String sort,
+            @ApiParam(name = "page", value = "查询下一页的第几页") @RequestParam Integer page,
+            @ApiParam(name = "pageSize", value = "分页的每一页显示的条数") @RequestParam Integer pageSize) {
+
+        if (StringUtils.isBlank(keywords)) {
+            return IMOOCJSONResult.errorMsg(null);
+        }
+
+        if (page == null) {
+            page = 1;
+        }
+
+        if (pageSize == null) {
+            pageSize = COMMENT_PAGE_SIZE;
+        }
+
+        PagedGridResult item = itemService.searchItems(keywords, sort, page, pageSize);
+        // 3 请求成功，用户名没要 重复
+        return IMOOCJSONResult.ok(item);
+    }
+
 }
