@@ -3,6 +3,7 @@ package com.imooc.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.imooc.enums.CommentLevel;
+import com.imooc.enums.YesOrNO;
 import com.imooc.mapper.*;
 import com.imooc.pojo.*;
 import com.imooc.pojo.vo.CommentLevelCountsVO;
@@ -168,5 +169,50 @@ public class ItemServiceImpl implements ItemService {
         List<String> specIdsList = new ArrayList<>();
         Collections.addAll(specIdsList, ids);
         return itemsMapperCustom.queryItemsBySpecIds(specIdsList);
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS, rollbackFor = RuntimeException.class)
+    @Override
+    public ItemsSpec queryItemSpecById(String specId) {
+        return itemsSpecMapper.selectByPrimaryKey(specId);
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS, rollbackFor = RuntimeException.class)
+    @Override
+    public String queryItemMainImgByIds(String itemId) {
+        ItemsImg itemsImg = new ItemsImg();
+        itemsImg.setItemId(itemId);
+        itemsImg.setIsMain(YesOrNO.YES.type);
+        ItemsImg res = itemsImgMapper.selectOne(itemsImg);
+        return res != null ? res.getUrl() : "";
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
+    @Override
+    public void decreaseItemSpecStock(String specId, Integer buyCounts) {
+        // synchronized 不推荐使用，集群下无用，性能地下
+        // 所数据库：不推荐，导致数据库性能地下
+        // 分布式锁: zookeeper redis
+
+        // lockUtil.getLock(); - - 加锁
+
+        // 1 查询库存
+        int stock = 2;
+
+        // 2 判断库存，是否能欧减少到0以下
+        if (stock - buyCounts < 0) {
+            // 提示用户库存不够
+            // 10 - 3-3-5 =-1
+        }
+
+        // lockUtil.unLock(); -- 解锁
+
+
+        int result = itemsMapperCustom.decreaseItemSpecStock(specId, buyCounts);
+        if (result != 1) {
+            throw new RuntimeException("订单创建失败，原因：库存不足！");
+        }
+
+
     }
 }
