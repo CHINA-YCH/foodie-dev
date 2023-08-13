@@ -14,5 +14,5 @@ public interface OrderService {
      * 用于创建订单
      * @param submitOrderBO
      */
-    public void createOrder(SubmitOrderBO submitOrderBO);
+    public String createOrder(SubmitOrderBO submitOrderBO);
 }
