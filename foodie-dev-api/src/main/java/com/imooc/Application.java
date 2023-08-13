@@ -1,10 +1,16 @@
 package com.imooc;
 
+import com.imooc.jvm.objectpool.datasource.DMDataSource;
+import com.imooc.jvm.objectpool.datasource.DataSourceEndpoint;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Primary;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import tk.mybatis.spring.annotation.MapperScan;
+
+import javax.sql.DataSource;
 
 /**
  * @author :Administrator
@@ -23,4 +29,17 @@ public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
+
+    @Bean
+    @Primary
+    public DataSource dataSource() {
+        return new DMDataSource();
+    }
+
+    @Bean
+    public DataSourceEndpoint dataSourceEndpoint() {
+        DataSource dataSource = this.dataSource();
+        return new DataSourceEndpoint((DMDataSource) dataSource);
+    }
+
 }
